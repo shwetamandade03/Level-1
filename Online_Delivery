@@ -1,0 +1,20 @@
+import pandas as pd
+
+# Load your dataset
+df = pd.read_csv("C:/Users/Personal/Downloads/Dataset (1).csv") 
+
+print(df.head())
+
+# Calculate the percentage of restaurants offering online delivery
+total_restaurants = len(df)
+Restaurant_with_Has_Online_delivery = df[df['Has Online delivery'] == 'Yes']
+percentage_Has_Online_delivery = (len(Restaurant_with_Has_Online_delivery) / total_restaurants) * 100
+
+print("Percentage of Restaurants Offering Online Delivery:", percentage_Has_Online_delivery)
+
+# Compare average ratings
+average_rating_with_Has_Online_delivery = Restaurant_with_Has_Online_delivery['Aggregate rating'].mean()
+average_Rating_without_online_delivery = df[df['Has Online delivery'] == 'No']['Aggregate rating'].mean()
+
+print("Average Rating for Restaurants with Online Delivery:", average_rating_with_Has_Online_delivery)
+print("Average Rating for Restaurants without Online Delivery:", average_Rating_without_online_delivery)

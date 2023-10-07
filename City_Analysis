@@ -1,0 +1,20 @@
+import pandas as pd
+
+# Load your dataset
+df = pd.read_csv("C:/Users/Personal/Downloads/Dataset (1).csv")  
+
+print(df.head())
+
+# Identify the city with the highest number of restaurants
+city_with_highest_restaurants = df['City'].value_counts().idxmax()
+
+# Calculate average ratings for restaurants in each city
+average_ratings_by_city = df.groupby('City')['Votes'].mean()
+
+# Determine the city with the highest average rating
+city_with_highest_avg_rating = average_ratings_by_city.idxmax()
+
+print("City with the Highest Number of Restaurants:", city_with_highest_restaurants)
+print("\nAverage Ratings by City:")
+print(average_ratings_by_city)
+print("\nCity with the Highest Average Rating:", city_with_highest_avg_rating)

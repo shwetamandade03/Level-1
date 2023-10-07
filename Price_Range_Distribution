@@ -1,0 +1,25 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load your dataset
+df = pd.read_csv("C:/Users/Personal/Downloads/Dataset (1).csv") 
+
+print(df.head())
+
+# Create a histogram or bar chart
+plt.figure(figsize=(8, 6))
+df['Price range'].value_counts().plot(kind='bar', color='skyblue')
+plt.title('Price range Distribution Among Restaurants')
+plt.xlabel('Price range')
+plt.ylabel('Number of Restaurants')
+plt.xticks(rotation=0)
+
+# Calculate the percentage of restaurants in each price range category
+total_restaurants = len(df)
+Price_range_counts = df['Price range'].value_counts()
+percentage_price_range = (Price_range_counts / total_restaurants) * 100
+
+print("Percentage of Restaurants in Each Price Range Category:")
+print(percentage_price_range)
+
+plt.show()
